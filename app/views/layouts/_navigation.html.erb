@@ -1,0 +1,33 @@
+<nav class="navbar navbar-light navbar-expand-lg" aria-label="">
+  <div class="container-xl">
+    <%= link_to "Serhii's blog", root_path, class:"navbar-brand", id:"logo" %>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample07XL" aria-controls="navbarsExample07XL" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarsExample07XL">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Articles</a>
+          <ul class="dropdown-menu">
+            <li><%= link_to "Create a new article", new_article_path, class: "dropdown-item" %></li>
+            <li><%= link_to "View articles", articles_path, class: "dropdown-item" %></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Separated link</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <%= link_to "About me", about_path, class:"nav-link" %>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Contact</a>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <a class="nav-link text-capitalize" href="#">Login</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

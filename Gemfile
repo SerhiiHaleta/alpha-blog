@@ -73,3 +73,5 @@ end
 group :production do
   gem "pg"
 end
+
+gem "bootstrap", "~> 5.1"
