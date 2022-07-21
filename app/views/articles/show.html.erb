@@ -3,18 +3,18 @@
   <div class="row justify-content-md-center">
     <div class="col-8 mt-4">
         <div class="card text-center">
-        <div class="card-header">
-            Featured
-        </div>
-        <div class="card-body">
-          <div class="card-text"><%= simple_format(@article.description) %></div>
-          <%= link_to "Edit", edit_article_path(@article), class: 'btn btn-outline-info' %>
-          <%= link_to "Delete", article_path(@article), class: 'btn btn-outline-danger', method: :delete, data: { "turbo-method": :delete , "turbo-confirm": "Are you sure?"} %>
-        </div>
-        <div class="card-footer text-muted">
-          <small>Created <%= time_ago_in_words(@article.created_at)  %> ago,
-          Edited <%= time_ago_in_words(@article.updated_at) %> ago</small>
-        </div>
+          <div class="card-header font-italic">
+            by <%= article.user.username if article.user %>
+          </div>
+          <div class="card-body">
+            <div class="card-text"><%= simple_format(@article.description) %></div>
+            <%= link_to "Edit", edit_article_path(@article), class: 'btn btn-outline-info' %>
+            <%= link_to "Delete", article_path(@article), class: 'btn btn-outline-danger', method: :delete, data: { "turbo-method": :delete , "turbo-confirm": "Are you sure?"} %>
+          </div>
+          <div class="card-footer text-muted">
+            <small>Created <%= time_ago_in_words(@article.created_at)  %> ago,
+            Edited <%= time_ago_in_words(@article.updated_at) %> ago</small>
+          </div>
         </div>
     </div>
   </div>
