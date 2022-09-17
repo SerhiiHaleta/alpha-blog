@@ -13,7 +13,9 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Articles</a>
           <ul class="dropdown-menu">
-            <li><%= link_to "Create a new article", new_article_path, class: "dropdown-item" %></li>
+            <% if logged_in? %>
+              <li><%= link_to "Create a new article", new_article_path, class: "dropdown-item" %></li>
+            <% end %>
             <li><%= link_to "View articles", articles_path, class: "dropdown-item" %></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="#">Separated link</a></li>
@@ -27,12 +29,29 @@
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li>
-          <a class="nav-link text-capitalize" href="#">Login</a>
-        </li>
-        <li>
-          <%= link_to "Sign up", signup_path, class: "nav-link text-capitalize" %>
-        </li>
+        <% if logged_in? %>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">
+              <%= '(Admin)' if current_user.admin? %> Profile [<%= current_user.username %>]
+            </a>
+            <ul class="dropdown-menu">
+              <li><%= link_to "View your profile", user_path(current_user), class: "dropdown-item" %></li>
+              <li><%= link_to "Edit your profile", edit_user_path(current_user), class: "dropdown-item" %></li>
+              <li><%= link_to "Delete your profile", user_path(current_user), class: "dropdown-item text-danger", method: :delete, data: { confirm: "Are you sure?" } %></li>
+              <li><%= link_to "Create a new article", new_article_path, class: "dropdown-item" %></li>
+            </ul>
+          </li>
+          <li>
+            <%= link_to "Logout", logout_path, class:"nav-link", method: :delete, data: {turbo_method: :delete} %>
+          </li>
+        <% else %>
+          <li>
+            <%= link_to "Login", login_path, class:"nav-link" %>
+          </li>
+          <li>
+            <%= link_to "Sign up", signup_path, class: "nav-link text-capitalize" %>
+          </li>
+        <% end %>
       </ul>
     </div>
   </div>
